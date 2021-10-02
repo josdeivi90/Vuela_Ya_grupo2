@@ -1,0 +1,31 @@
+Vuelo,Aerolinea,Origen,Destino,Fecha,"hora de salida","Duracion del Vuelo (min)","Precio minimo COP","precio maximo COP"
+1,Avianca,Bogota,Bucaramanga,2021-12-01,08:10:00,50,120000,450000
+2,Latam,Cali,Cartagena,2021-12-01,08:30:00,45,100000,800000
+3,"Viva Air",Medellin,Bogota,2021-12-01,09:00:00,30,100000,800000
+4,Avianca,Bucaramanga,Cali,2021-12-01,09:30:00,45,100000,800000
+5,Latam,Cartagena,Medellin,2021-12-01,10:00:00,45,100000,800000
+6,"Viva Air",Bogota,Cartagena,2021-12-01,10:30:00,45,100000,800000
+7,Avianca,Cali,Bogota,2021-12-01,10:50:00,45,100000,800000
+8,Latam,Medellin,Cartagena,2021-12-01,11:11:00,45,100000,800000
+9,"Viva Air",Bogota,Cali,2021-12-01,12:10:00,45,100000,800000
+10,Avianca,Cartagena,Medellin,2021-12-01,12:30:00,45,100000,800000
+11,Latam,Bucaramanga,Bogota,2021-12-01,12:50:00,50,100000,800000
+12,"Viva Air",Bogota,Medellin,2021-12-01,13:12:00,45,100000,800000
+13,Avianca,Medellin,Bogota,2021-12-01,13:20:00,50,100000,800000
+14,Latam,Bucaramanga,Medellin,2021-12-01,13:40:00,35,100000,800000
+15,"Viva Air",Bogota,Cartagena,2021-12-01,13:50:00,45,100000,800000
+16,Avianca,Medellin,Cali,2021-12-01,14:25:00,45,100000,800000
+17,Latam,Cali,Cali,2021-12-01,14:46:00,45,100000,800000
+18,"Viva Air",Bucaramanga,Cartagena,2021-12-01,15:30:00,45,100000,800000
+19,Avianca,Bogota,Medellin,2021-12-01,15:50:00,45,100000,800000
+20,Latam,Medellin,Bogota,2021-12-01,16:20:00,45,100000,800000
+21,"Viva Air",Bucaramanga,Bogota,2021-12-01,16:40:00,45,100000,800000
+22,Avianca,Bogota,Cali,2021-12-01,17:12:00,45,100000,800000
+23,Latam,Cali,Medellin,2021-12-01,17:40:00,45,100000,800000
+24,"Viva Air",Medellin,Bogota,2021-12-01,18:13:00,45,100000,800000
+25,Avianca,Bogota,Medellin,2021-12-01,18:40:00,45,100000,800000
+26,Latam,Cartagena,Cali,2021-12-01,19:00:00,45,100000,800000
+27,"Viva Air",Bogota,Bogota,2021-12-01,19:13:00,45,100000,800000
+28,Avianca,Cali,Cartagena,2021-12-01,19:30:00,45,100000,800000
+29,Latam,Cartagena,Bogota,2021-12-01,20:30:00,45,100000,800000
+30,"Viva Air",Bogota,Cali,2021-12-01,22:20:00,45,100000,800000
