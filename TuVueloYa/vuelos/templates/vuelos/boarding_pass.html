@@ -1,0 +1,108 @@
+{% extends "vuelos/base.html" %}
+
+{% block title %}Boarding Pass - TuVueloYa{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="text-center mb-4">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+            <h2 class="mt-2">Reserva confirmada</h2>
+            <p class="text-muted">Tu boarding pass ha sido generado exitosamente</p>
+        </div>
+
+        <div class="card shadow border-0 boarding-pass-card">
+            <div class="card-body p-0">
+                <div class="row g-0">
+                    <!-- Sección principal del boarding pass -->
+                    <div class="col-md-8">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <span class="badge bg-primary fs-6 px-3 py-2">{{ reserva.vuelo.aerolinea }}</span>
+                                </div>
+                                <div class="text-end">
+                                    <small class="text-muted d-block">Vuelo</small>
+                                    <span class="fs-4 fw-bold">#{{ reserva.vuelo.numero }}</span>
+                                </div>
+                            </div>
+
+                            <div class="row my-4">
+                                <div class="col-5 text-center">
+                                    <div class="fs-2 fw-bold text-primary">{{ reserva.vuelo.origen|truncatechars:3 }}</div>
+                                    <small class="text-muted">{{ reserva.vuelo.origen }}</small>
+                                </div>
+                                <div class="col-2 text-center align-self-center">
+                                    <i class="bi bi-airplane-fill text-primary fs-4"></i>
+                                </div>
+                                <div class="col-5 text-center">
+                                    <div class="fs-2 fw-bold text-primary">{{ reserva.vuelo.destino|truncatechars:3 }}</div>
+                                    <small class="text-muted">{{ reserva.vuelo.destino }}</small>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row g-3">
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Pasajero</small>
+                                    <strong>{{ reserva.nombre_pasajero }}</strong>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Fecha</small>
+                                    <strong>{{ reserva.vuelo.fecha }}</strong>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Hora</small>
+                                    <strong>{{ reserva.vuelo.hora_salida|time:"H:i" }}</strong>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Duración</small>
+                                    <strong>{{ reserva.vuelo.duracion }}h</strong>
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mt-1">
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Pasajeros</small>
+                                    <strong>{{ reserva.num_personas }}</strong>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Equipaje</small>
+                                    <strong>{{ reserva.tipo_equipaje|title }}</strong>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Pago</small>
+                                    <strong>{{ reserva.get_metodo_pago_display }}</strong>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <small class="text-muted d-block">Total</small>
+                                    <strong class="text-success">${{ reserva.precio_final|floatformat:0 }} COP</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección del QR -->
+                    <div class="col-md-4 bg-light border-start d-flex flex-column align-items-center justify-content-center p-4">
+                        <img src="data:image/png;base64,{{ qr_image }}" alt="Código QR" class="img-fluid mb-3" style="max-width: 180px;">
+                        <small class="text-muted text-center">
+                            Código de reserva:<br>
+                            <code class="text-primary">{{ reserva.codigo_reserva }}</code>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'vuelos:index' %}" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-house me-2"></i>Volver al inicio
+            </a>
+            <button onclick="window.print()" class="btn btn-primary btn-lg ms-2">
+                <i class="bi bi-printer me-2"></i>Imprimir
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

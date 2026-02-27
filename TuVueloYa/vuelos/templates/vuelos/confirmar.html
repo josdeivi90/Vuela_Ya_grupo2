@@ -1,0 +1,104 @@
+{% extends "vuelos/base.html" %}
+
+{% block title %}Confirmar reserva - TuVueloYa{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'vuelos:index' %}">Inicio</a></li>
+                <li class="breadcrumb-item active">Confirmar reserva</li>
+            </ol>
+        </nav>
+
+        <h2 class="mb-4"><i class="bi bi-clipboard-check text-primary me-2"></i>Confirmar reserva</h2>
+
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-airplane me-2"></i>Detalle del vuelo</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-borderless mb-0">
+                            <tr>
+                                <td class="text-muted">Aerolínea</td>
+                                <td class="fw-bold">{{ vuelo.aerolinea }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Vuelo</td>
+                                <td class="fw-bold">#{{ vuelo.numero }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Ruta</td>
+                                <td class="fw-bold">{{ vuelo.origen }} → {{ vuelo.destino }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Fecha</td>
+                                <td class="fw-bold">{{ vuelo.fecha }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-borderless mb-0">
+                            <tr>
+                                <td class="text-muted">Hora de salida</td>
+                                <td class="fw-bold">{{ vuelo.hora_salida|time:"H:i" }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Duración</td>
+                                <td class="fw-bold">{{ vuelo.duracion }} hora{{ vuelo.duracion|pluralize }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Equipaje</td>
+                                <td class="fw-bold">{{ tipo_equipaje|title }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Pasajeros</td>
+                                <td class="fw-bold">{{ num_personas }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 border-start border-4 border-success mb-4">
+            <div class="card-body text-center py-4">
+                <div class="text-muted">Precio por persona</div>
+                <div class="display-6 fw-bold text-success">${{ precio_unitario|floatformat:0 }} COP</div>
+                {% if num_personas > 1 %}
+                <hr>
+                <div class="text-muted">Total para {{ num_personas }} pasajeros</div>
+                <div class="fs-3 fw-bold text-primary">${{ precio_total|floatformat:0 }} COP</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="mb-3"><i class="bi bi-person-fill me-2"></i>Datos del pasajero</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">{{ form.nombre_pasajero.label }}</label>
+                        {{ form.nombre_pasajero }}
+                        {% if form.nombre_pasajero.errors %}
+                        <div class="text-danger small mt-1">{{ form.nombre_pasajero.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'vuelos:index' %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-1"></i>Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-check-circle me-1"></i>Confirmar y continuar al pago
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

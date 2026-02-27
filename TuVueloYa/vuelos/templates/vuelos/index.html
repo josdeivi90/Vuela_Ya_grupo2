@@ -1,0 +1,84 @@
+{% extends "vuelos/base.html" %}
+
+{% block title %}TuVueloYa - Busca tu vuelo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="text-center mb-4">
+            <h1 class="display-5 fw-bold text-primary">
+                <i class="bi bi-airplane-fill"></i> Encuentra tu vuelo ideal
+            </h1>
+            <p class="lead text-muted">
+                Busca entre vuelos de Avianca, Latam y Viva Air por toda Colombia
+            </p>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-3">
+                    <i class="bi bi-search me-2"></i>Buscar vuelos
+                </h5>
+                <form method="get" action="{% url 'vuelos:resultados' %}">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Origen</label>
+                            {{ form.origen }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Destino</label>
+                            {{ form.destino }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">Fecha de viaje</label>
+                            {{ form.fecha }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">Pasajeros</label>
+                            {{ form.num_personas }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">Tipo de equipaje</label>
+                            {{ form.tipo_equipaje }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Precio sugerido (COP)</label>
+                            {{ form.precio_sugerido }}
+                            <div class="form-text">Ingresa cuánto estarías dispuesto a pagar</div>
+                        </div>
+                        <div class="col-12 text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="bi bi-search me-2"></i>Buscar vuelos
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-5 text-center g-4">
+            <div class="col-md-4">
+                <div class="p-3">
+                    <i class="bi bi-shield-check text-primary" style="font-size: 2rem;"></i>
+                    <h6 class="mt-2">Reserva segura</h6>
+                    <small class="text-muted">Tu información está protegida</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3">
+                    <i class="bi bi-currency-dollar text-success" style="font-size: 2rem;"></i>
+                    <h6 class="mt-2">Precios dinámicos</h6>
+                    <small class="text-muted">Ajustados según tu presupuesto</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3">
+                    <i class="bi bi-qr-code text-info" style="font-size: 2rem;"></i>
+                    <h6 class="mt-2">Boarding pass digital</h6>
+                    <small class="text-muted">Con código QR al instante</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

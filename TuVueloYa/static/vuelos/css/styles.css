@@ -1,0 +1,38 @@
+body {
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.flight-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.boarding-pass-card {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.list-group-item:has(input:checked) {
+    background-color: #e8f5e9;
+    border-color: #4caf50;
+}
+
+@media print {
+    .navbar, footer, .btn, nav[aria-label="breadcrumb"] {
+        display: none !important;
+    }
+    .boarding-pass-card {
+        border: 2px solid #000 !important;
+    }
+}
